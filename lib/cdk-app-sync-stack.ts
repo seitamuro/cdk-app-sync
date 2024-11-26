@@ -34,5 +34,14 @@ export class CdkAppSyncStack extends cdk.Stack {
       ),
       responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
     });
+
+    dataSource.createResolver("AppSyncDynamoDBDeleteTodosResolver", {
+      typeName: "Mutation",
+      fieldName: "deleteTodo",
+      requestMappingTemplate: appsync.MappingTemplate.fromFile(
+        "graphql/deleteTodo.vtl"
+      ),
+      responseMappingTemplate: appsync.MappingTemplate.dynamoDbResultItem(),
+    });
   }
 }

@@ -12,10 +12,15 @@ input CreateTodoInput {
   done: Boolean = false
 }
 
+input DeleteInput {
+  id: String!
+}
+
 type Query {
   getTodos: [Todo]
 }
 
 type Mutation {
   postTodo(input: CreateTodoInput!): Todo
+  deleteTodo(input: DeleteInput!): Todo
 }
